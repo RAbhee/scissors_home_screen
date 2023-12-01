@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scissors_home_screen/categories.dart';
 import 'package:scissors_home_screen/categorieslist_screen.dart';
 
 
