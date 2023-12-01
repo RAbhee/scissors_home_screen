@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'categories.dart';
 
-class CategoriesListScreen extends StatefulWidget {
 
+class CategoriesListScreen extends StatefulWidget {
   @override
   _CategoriesListScreenState createState() => _CategoriesListScreenState();
 }
 
 class _CategoriesListScreenState extends State<CategoriesListScreen> {
-
   List<Categories> categoriesList = [
     Categories(
       title: "Men's Haircut",
@@ -57,15 +56,20 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
 
   List<Categories> selectedCategories = [];
 
-  void _toggleAddClicked(int index) {
+  void _toggle(int index) {
     setState(() {
-      categoriesList[index].addClickedStatus.isAddClicked =
-      !categoriesList[index].addClickedStatus.isAddClicked;
-      if (categoriesList[index].addClickedStatus.isAddClicked) {
-        selectedCategories.add(categoriesList[index]);
+      Categories category = categoriesList[index];
+      category.addClickedStatus.isAddClicked = !category.addClickedStatus.isAddClicked;
+
+      if (category.addClickedStatus.isAddClicked) {
+        selectedCategories.add(category);
+        _incrementQuantity(index);
       } else {
-        selectedCategories.remove(categoriesList[index]);
+        selectedCategories.remove(category);
+        _decrementQuantity(index);
       }
+
+      _showSelectedCategoriesPopup();
     });
   }
 
@@ -90,12 +94,12 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
   String calculateTotalPrice() {
     double totalPrice = 0.0;
     for (Categories category in selectedCategories) {
-      // Extract numeric part of the price
+
       String priceString = category.price.replaceAll(RegExp(r'[^0-9.]'), '');
 
-      // Check if the price is not empty
+
       if (priceString.isNotEmpty) {
-        // Check if the price contains a decimal point
+
         if (priceString.contains('.')) {
           totalPrice += double.parse(priceString);
         } else {
@@ -103,8 +107,6 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
         }
       }
     }
-
-    // Format the total price with the rupee symbol and "-/-" suffix
     String formattedTotalPrice =
     totalPrice == 0 ? '₹0/-' : '₹${totalPrice.toStringAsFixed(0)}/-';
 
@@ -203,13 +205,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
                       ),
                       child: GestureDetector(
                         onTap: () {
-                          _toggleAddClicked(index);
-                          if (!categories.addClickedStatus.isAddClicked) {
-                            _incrementQuantity(index);
-                          } else {
-                            _decrementQuantity(index);
-                          }
-                          _showSelectedCategoriesPopup();
+                          _toggle(index);
                         },
                         child: Container(
                           padding: EdgeInsets.symmetric(
@@ -243,3 +239,4 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
     );
   }
 }
+
