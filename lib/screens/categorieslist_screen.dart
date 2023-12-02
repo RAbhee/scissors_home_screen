@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:scissors_home_screen/screens/bookingslot_screen.dart';
 
-import 'categories.dart';
+import '../models/categories.dart';
 
 
 class CategoriesListScreen extends StatefulWidget {
@@ -115,18 +117,20 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
 
   void _showSelectedCategoriesPopup() {
     showModalBottomSheet(
+      backgroundColor: Colors.lightBlueAccent[700],
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(50),bottom: Radius.circular(50)),),
       context: context,
       builder: (BuildContext context) {
         return Container(
           padding: EdgeInsets.all(16.0),
-          height: 300,
-          color: Colors.white,
+          height: 250,
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Selected Services',
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                'Selected Services:',
+                style: GoogleFonts.robotoMono(fontSize: 20.0, fontWeight: FontWeight.bold,),
               ),
               SizedBox(height: 10.0),
               Expanded(
@@ -135,8 +139,14 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
                   itemBuilder: (context, index) {
                     Categories category = selectedCategories[index];
                     return ListTile(
-                      title: Text(category.title),
-                      subtitle: Text(category.price),
+                      title: Text(
+                        category.title,
+                        style: GoogleFonts.lato(fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        category.price,
+                        style: GoogleFonts.lato(fontSize: 15, fontWeight: FontWeight.bold,),
+                      ),
                     );
                   },
                 ),
@@ -147,13 +157,22 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
                 child: Column(
                   children: [
                     Text(
-                      'Total Price: ${calculateTotalPrice()}',
-                      style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                      'Total Price :  ${calculateTotalPrice()}',
+                      style: GoogleFonts.lato(fontSize: 16.0, fontWeight: FontWeight.bold,),
                     ),
+                    SizedBox(height: 10,),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => BookingSlotScreen()),
+                        );
+
                       },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.red,
+                      ),
                       child: Text('BOOK'),
                     ),
                   ],
@@ -169,72 +188,75 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: categoriesList.length,
-        itemBuilder: (context, index) {
-          Categories categories = categoriesList[index];
-          return Card(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  child: ListTile(
-                    title: Text(
-                      categories.title,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(padding: EdgeInsets.only(bottom: 15)),
-                        Text(
-                          categories.price,
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    leading: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.network(categories.image),
-                    ),
-
-                    trailing: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(10.0),
+      body: Container(
+        color: Colors.cyan[700],
+        child: ListView.builder(
+          itemCount: categoriesList.length,
+          itemBuilder: (context, index) {
+            Categories categories = categoriesList[index];
+            return Card(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    child: ListTile(
+                      title: Text(
+                        categories.title,
+                        style: GoogleFonts.lato(fontWeight: FontWeight.bold,fontSize: 20),
                       ),
-                      child: GestureDetector(
-                        onTap: () {
-                          _toggle(index);
-                        },
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 16.0, vertical: 8.0),
-                          child: Text(
-                            categories.addClickedStatus.isAddClicked
-                                ? 'REMOVE'
-                                : 'ADD',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.0,
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(padding: EdgeInsets.only(bottom: 15)),
+                          Text(
+                            categories.price,
+                            style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      leading: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.network(categories.image),
+                      ),
+
+                      trailing: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            _toggle(index);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16.0, vertical: 8.0),
+                            child: Text(
+                              categories.addClickedStatus.isAddClicked
+                                  ? 'REMOVE'
+                                  : 'ADD',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.0,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 14, bottom: 5),
-                  child: Text(
-                    categories.description,
-                    style: TextStyle(color: Colors.black),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 14, bottom: 5),
+                    child: Text(
+                      categories.description,
+                      style: GoogleFonts.robotoSlab(fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          );
-        },
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
