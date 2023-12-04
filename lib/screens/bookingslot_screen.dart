@@ -7,7 +7,7 @@ class BookingSlotScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan[700],//blueGrey[700],
+      //backgroundColor: Colors.cyan[700],//blueGrey[700],
       body: Column(
           children: [
             Padding(padding: EdgeInsets.only(top: 10.0,)),

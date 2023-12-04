@@ -14,53 +14,80 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          backgroundColor: Colors.cyan[700],//blueGrey[700],
-          body: Column(
-              children: [
-                Padding(padding: EdgeInsets.only(top: 10.0,)),
-
-                Row(
-                  children: [
-                    Padding(padding: EdgeInsets.only(left: 20.0)),
-                    ClipRRect(
-                     borderRadius: BorderRadius.circular(10.0),
-                      child: Image.asset(
-                        "images/Scissors logo.jpg",
-                        height: 100,
-                        width: 100,
-                      ),
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        //backgroundColor: Colors.cyan[700],//blueGrey[700],
+        body:
+        Stack(
+          children: [
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage("images/backgroundimage.jpg"),
+                    fit: BoxFit.cover
+                ),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(255, 255, 255, 0.8)
+              ),
+            ),
+          Column(
+            children: [
+              Padding(padding: EdgeInsets.only(top: 10.0)),
+              Row(
+                children: [
+                  Padding(padding: EdgeInsets.only(left: 20.0)),
+                  ClipRect(
+                    //borderRadius: BorderRadius.circular(15),
+                    child:
+                    Image.asset("images/logooo.png",
+                    height: 100,
+                      width: 100,
                     ),
-                  ],
-                ),
-
-
-                SizedBox(height: 8,),
-                Row(
-                  children: [
-                    Padding(padding: EdgeInsets.only(left: 20)),
-                    Text(
-                      "Scissor's",
-                     style: GoogleFonts.robotoMono(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-
-                    Text("Services",
-                     style: GoogleFonts.courierPrime(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white,),
-                    )
-                  ],
-                ),
-                Expanded(
+                  )
+                ],
+              ),
+              SizedBox(height: 8,),
+              Row(
+                children: [
+                  Padding(padding: EdgeInsets.only(left: 26)),
+                  Text("Scissor's",style: GoogleFonts.robotoMono(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900),
+                  )
+                ],
+              ),
+              SizedBox(height: 5,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Services",
+                  style: GoogleFonts.courierPrime(
+                    fontSize: 35,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.indigo,),
+                  )
+                ],
+              ),
+              Expanded(
                   child: CategoriesListScreen(),
-                ),
-              ]
-          ),
-        ));
+              )
+            ],
+
+          )
+
+          ],
+        ),
+
+
+
+
+
+    )
+
+    );
   }
 }

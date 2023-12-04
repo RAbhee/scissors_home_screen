@@ -117,7 +117,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
 
   void _showSelectedCategoriesPopup() {
     showModalBottomSheet(
-      backgroundColor: Colors.lightBlueAccent[700],
+      //backgroundColor: Colors.lightBlueAccent[700],
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(50),bottom: Radius.circular(50)),),
       context: context,
       builder: (BuildContext context) {
@@ -171,7 +171,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
 
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.red,
+                        primary: Colors.blue,
                       ),
                       child: Text('BOOK'),
                     ),
@@ -189,7 +189,6 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.cyan[700],
         child: ListView.builder(
           itemCount: categoriesList.length,
           itemBuilder: (context, index) {
@@ -221,7 +220,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
 
                       trailing: Container(
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Colors.indigo,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: GestureDetector(
