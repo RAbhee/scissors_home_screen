@@ -69,6 +69,7 @@ flutter:
   - images/massage.webp
   - images/logooo.png
   - images/backgroundimage.jpg
+  - images/error.jpg
  
 
 
@@ -86,8 +87,14 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
+  fonts:
+  - family: <link rel="preconnect" href="https://fonts.googleapis.com">
+  - family: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  - family: <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  - family: <link rel="preconnect" href="https://fonts.googleapis.com">
+  - family: <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  - family:  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf

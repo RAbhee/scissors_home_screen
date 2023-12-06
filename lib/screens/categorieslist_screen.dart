@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scissors_home_screen/screens/bookingslot_screen.dart';
-
 import '../models/categories.dart';
-
 
 class CategoriesListScreen extends StatefulWidget {
   @override
   _CategoriesListScreenState createState() => _CategoriesListScreenState();
 }
-
 class _CategoriesListScreenState extends State<CategoriesListScreen> {
   List<Categories> categoriesList = [
     Categories(
       title: "Men's Haircut",
       price: "Rs 200/-",
-      description: "You look sleek with that new haircut.",
+      description: "(You look sleek with that new haircut.)",
       image: "images/Mens.jpg",
       quantity: 0,
       addClickedStatus: AddClickedStatus(isAddClicked: false),
@@ -24,7 +21,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
       title: "Men's Shaving",
       price: "Rs 100/-",
       description:
-      "Wait to shave after or several minutes into a shower or bath as warm water helps soften hair and open pores.",
+      "(Wait to shave after or several minutes into a shower or bath as warm water helps soften hair and open pores.)",
       image: "images/shaving.jpg",
       quantity: 0,
       addClickedStatus: AddClickedStatus(isAddClicked: false),
@@ -32,7 +29,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
     Categories(
       title: "Hair Color",
       price: "Rs 300/-",
-      description: "Invest in your hair color, it's the crown you never take off.",
+      description: "(Invest in your hair color, it's the crown you never take off.)",
       image: "images/hair color.jpg",
       quantity: 0,
       addClickedStatus: AddClickedStatus(isAddClicked: false),
@@ -40,7 +37,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
     Categories(
       title: "Face Mask",
       price: "Rs 200/-",
-      description: "Looks so Good on the Outside, It'll Make You Feel Good Inside.",
+      description: "(Looks so Good on the Outside, It'll Make You Feel Good Inside.)",
       image: "images/face care.webp",
       quantity: 0,
       addClickedStatus: AddClickedStatus(isAddClicked: false),
@@ -49,7 +46,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
       title: "Massage",
       price: "Rs 500/-",
       description:
-      "A Massage should be pleasing to all the senses, creating a relaxed and positive atmosphere.",
+      "(A Massage should be pleasing to all the senses, creating a relaxed and positive atmosphere.)",
       image: "images/massage.webp",
       quantity: 0,
       addClickedStatus: AddClickedStatus(isAddClicked: false),
@@ -130,7 +127,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
             children: [
               Text(
                 'Selected Services:',
-                style: GoogleFonts.robotoMono(fontSize: 20.0, fontWeight: FontWeight.bold,),
+                style: GoogleFonts.poppins(fontSize: 20.0, fontWeight: FontWeight.bold,),
               ),
               SizedBox(height: 10.0),
               Expanded(
@@ -141,11 +138,11 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
                     return ListTile(
                       title: Text(
                         category.title,
-                        style: GoogleFonts.lato(fontWeight: FontWeight.bold),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(
                         category.price,
-                        style: GoogleFonts.lato(fontSize: 15, fontWeight: FontWeight.bold,),
+                        style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.bold,),
                       ),
                     );
                   },
@@ -158,7 +155,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
                   children: [
                     Text(
                       'Total Price :  ${calculateTotalPrice()}',
-                      style: GoogleFonts.lato(fontSize: 16.0, fontWeight: FontWeight.bold,),
+                      style: GoogleFonts.poppins(fontSize: 16.0, fontWeight: FontWeight.bold,),
                     ),
                     SizedBox(height: 10,),
                     ElevatedButton(
@@ -171,8 +168,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
 
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
-                      ),
+                        primary: Colors.brown),
                       child: Text('BOOK'),
                     ),
                   ],
@@ -201,7 +197,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
                     child: ListTile(
                       title: Text(
                         categories.title,
-                        style: GoogleFonts.lato(fontWeight: FontWeight.bold,fontSize: 20),
+                        style: GoogleFonts.openSans(fontWeight: FontWeight.bold,fontSize: 20),
                       ),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -209,7 +205,8 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
                           Padding(padding: EdgeInsets.only(bottom: 15)),
                           Text(
                             categories.price,
-                            style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                            style: TextStyle
+                              (color: Colors.black,fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -220,7 +217,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
 
                       trailing: Container(
                         decoration: BoxDecoration(
-                          color: Colors.indigo,
+                          color: Colors.brown,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: GestureDetector(
@@ -248,7 +245,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
                     padding: const EdgeInsets.only(left: 14, bottom: 5),
                     child: Text(
                       categories.description,
-                      style: GoogleFonts.robotoSlab(fontWeight: FontWeight.bold),
+                      style: GoogleFonts.poppins(fontWeight: FontWeight.normal),
                     ),
                   ),
                 ],
