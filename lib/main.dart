@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:scissors_home_screen/screens/categorieslist_screen.dart';
-import 'package:scissors_home_screen/screens/error%20screen.dart';
 import 'package:scissors_home_screen/theme.dart';
 
 void main() {

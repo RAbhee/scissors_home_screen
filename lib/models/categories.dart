@@ -1,4 +1,5 @@
 
+
 class AddClickedStatus {
   bool isAddClicked;
 

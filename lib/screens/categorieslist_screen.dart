@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:scissors_home_screen/screens/bookingslot_screen.dart';
 import '../models/categories.dart';
+import 'bookingscreen.dart';
 
 class CategoriesListScreen extends StatefulWidget {
   @override
@@ -168,7 +168,7 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
 
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.brown),
+                        primary: Colors.grey),
                       child: Text('BOOK'),
                     ),
                   ],
@@ -183,8 +183,8 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return
+      Container(
         child: ListView.builder(
           itemCount: categoriesList.length,
           itemBuilder: (context, index) {
@@ -212,12 +212,12 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
                       ),
                       leading: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
-                        child: Image.network(categories.image),
+                        child: Image.network(categories.image,height: 20,width: 15,),
                       ),
 
                       trailing: Container(
                         decoration: BoxDecoration(
-                          color: Colors.brown,
+                          color: categories.addClickedStatus.isAddClicked ? Colors.grey : Colors.brown,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: GestureDetector(
@@ -234,7 +234,8 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16.0,
-                              ),
+                              ),//
+
                             ),
                           ),
                         ),
@@ -253,7 +254,6 @@ class _CategoriesListScreenState extends State<CategoriesListScreen> {
             );
           },
         ),
-      ),
     );
   }
 }
